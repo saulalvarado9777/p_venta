@@ -1,0 +1,8 @@
+{
+    "require": {
+        "mpdf/mpdf": "^8.0",
+        "phpoffice/phpspreadsheet": "^1.17",
+        "facturapi/facturapi-php": "^1.5",
+        "facturama/facturama-php-sdk": "^2.0@dev"
+    }
+}

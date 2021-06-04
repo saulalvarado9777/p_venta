@@ -1,0 +1,86 @@
+.carro *{
+    position: relative;
+
+}
+@media screen and (max-width: 900px)
+{
+    .carro *{
+        display: block;
+        width: 260px important ;
+        height: auto;
+    }
+    .carro thead{
+        display: none;
+    }
+    .carro > *, .carro tr, .carro td {
+        display: block;
+    }
+
+    .carro tbody tr td{
+        padding-left: 70%;
+        margin-bottom: -5px;
+    }
+    
+    .carro tbody tr td:last-child{
+        margin-bottom: 0;
+    }
+    
+    .carro tbody tr td:before{
+        color: #999;
+        font-weight: unset;
+        position: absolute;
+        left: 10px;
+        top: 10px;
+    }
+
+    .carro tbody tr{
+        font-size: 12px;
+    }
+
+
+    .carro tbody tr td:nth-child(1):before{
+        content: "Código";
+        font-weight: bold;
+        color:  #000;
+    }
+    .carro tbody tr td:nth-child(2):before{
+        content: "Nombre";
+        font-weight: bold;
+        color:  #000;
+    }
+    .carro tbody tr td:nth-child(3):before{
+        content: "Precio";
+        font-weight: bold;
+        color:  #000;
+    }
+    .carro tbody tr td:nth-child(4):before{
+        content: "Eliminar";
+        font-weight: bold;
+        color:  #000;
+    }
+   /* .carro tbody tr td :nth-child(2):before{
+        content: "Nombre";
+        font-weight: bold;
+        color:  #000;
+    }
+    .carro tbody tr td :nth-child(3):before{
+        content: "Concentración";
+        font-weight: bold;
+        color:  #000;
+    }
+    .carro tbody tr td :nth-child(4):before{
+        content: "Adicional";
+        font-weight: bold;
+        color:  #000;
+    }
+    .carro tbody tr td :nth-child(5):before{
+        content: "Precio";
+        font-weight: bold;
+        color:  #000;
+    }
+   .carro tbody tr td :nth-child(6):before{
+        content: "Eliminar";
+        font-weight: bold;
+        color:  #000;
+    }*/
+}
