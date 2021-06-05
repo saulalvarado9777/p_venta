@@ -61,8 +61,8 @@ function getHtml($id_venta)
                 <tbody>';
                 foreach ($venta_producto->objetos as $objeto) {
                 
-                $plantilla.='<tr>
-                    
+                $plantilla.='
+                <tr>    
                     <td class="servic_producto">'.$objeto->producto.'</td>
                     <td class="servic">'.$objeto->unidad.'</td>
                     <td class="servic">'.$objeto->categoria.'</td>

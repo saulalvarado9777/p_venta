@@ -6,6 +6,15 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
     recuperarls_carrito();
     calcular_total();
     recuperarls_carrito_compra();
+    recuperarls_carrito_venta();
+    
+    $(document).on('click','#imp',(e)=>{
+        let id_venta=1;
+        $.post('../controlador/pdf_venta_controller.php',{id_venta},(Response)=>{
+            //console.log(Response);//obtenemos el pdf como respuesta y no es soportado por js
+            window.open('../pdf_venta/pdf-'+id_venta+'.pdf','_blank')
+          });
+    });
     $(document).on('click','.carrito',(e)=>//evento on cada vez que haga click en agregar al carrito y ocurra un evento va hacer un callback o una funcion
     {
         const elemento =$(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;//capturamos los datos del card del producto
@@ -78,29 +87,7 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
         calcular_total();
         //console.log(contador);
     });
-    $(document).on('click','#imp',(e)=>
-    {  
-        productos = recuperarls();//primero recuperamos lo que tiene el local
-        funcion='buscar_id';
-        productos.forEach(producto => {
-            id_producto=producto.id
-            console.log(id_producto);
-            $.post('../controlador/producto_controller.php',{funcion,id_producto},(Response)=>{//hacemos un bucle para ir marcadnp producto por producto en el carrito
-                //console.log(Response);  
-                let template_carrito='';
-                let json= JSON.parse(Response);
-                template_carrito=`
-                <tr ="${json.id}">
-                    <td>${json.id}</td>
-                    <td>${json.nombre}</td>
-                    <td>$${json.precio_out}</td>
-                    <td><button class="borrar-producto btn btn-danger"><i class="fas fa-times-circle"</button></td>
-                </tr>
-                `;
-                $('#lista-compra').append(template_carrito);
-            });
-        });
-    });
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $(document).on('click','#vaciar',(e)=>//hace referencia al boton vaciar dentro del nav
     {
@@ -222,6 +209,21 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
         }
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+async function recuperarls_carrito_venta()
+{
+    productos = recuperarls();
+    funcion='traer_productos_ls';
+    //productos.forEach(producto => {
+        const Response = await fetch('../controlador/pdf_venta_controller.php',{
+            method:'POST',
+            headers:{'Content-Type':'application/x-www-form-urlencoded'},
+            body:'funcion='+funcion+'&&productos='+JSON.stringify(productos)//lo que le enviamos al servidor lo tenemos que codificar
+        });
+        let resultado = await Response.text();
+        console.log(resultado);
+    //});
+    //$('#lista-ventas').append(resultado);
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async function recuperarls_carrito_compra()
     {

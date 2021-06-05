@@ -169,5 +169,15 @@ class venta
         $this->objetos=$query->fetchall();
         return $this->objetos;
     }
+    function obtener_id_venta()
+    {
+            $sql="SELECT LAST_INSERT_ID(id_ventas)+1 AS sig_venta 
+            FROM Ventas 
+            ORDER BY id_ventas DESC LIMIT 0,1"; 
+            $query= $this->acceso->prepare($sql); 
+            $query->execute();
+            $this->objetos=$query->fetchall();
+            return $this->objetos;
+    }
 }
 ?>

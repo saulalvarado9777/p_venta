@@ -104,28 +104,18 @@ if($_POST['funcion']=='cliente_mes')
     $jsonstring=json_encode($json);
     echo $jsonstring;
 }
-/*if($_POST['funcion']=='buscar')
-{
-    $lote->buscar();
-    $json=array();
-    foreach($lote->objetos as $objeto)
+if($_POST['funcion']=='obtener_id_venta')
     {
-        $json[]=array(
-            'id'=>$objeto->id_lote,
-            'nombre'=>$objeto->prod_nombre,
-            'proveedor'=>$objeto->prov_nombre,
-            'stock'=>$objeto->stock,
-            'categoria'=>$objeto->cat_nombre,
-            'fecha'=>$objeto->fecha,
-            
-        );
+        $venta->obtener_id_venta();
+        $json=array();
+        foreach ($venta->objetos as $objeto)
+        {
+            $json[] = array(
+                'id'=>$objeto->sig_venta,
+            );
+        }
+        $jsonstring=json_encode($json);
+        echo $jsonstring;
     }
-    $jsonstring=json_encode($json);
-    echo $jsonstring;
-}
-if($_POST['funcion']=='borrar')
-{
-    $id = $_POST['id'];
-    $lote->borrar($id);
-}*/
+
 ?> 

@@ -38,54 +38,6 @@ $(document).ready(function()
             $('#proveedor').html(template);
         })
     }
-    /*function llenar_laboratorios() //muestra los valores de la tabla laboratorios con el select2
-    {
-        funcion='llenar_laboratorios';
-        $.post('../controlador/laboratorio_controller.php',{funcion},(Response)=>
-        {
-            //console.log(Response);
-            const laboratorios = JSON.parse(Response);
-            let template='';
-            laboratorios.forEach(laboratorio => {
-                template+=`
-                <option value="${laboratorio.id}">${laboratorio.nombre}</option>
-                `;
-            });
-            $('#laboratorio').html(template);
-        })
-    }
-    function llenar_tipos() //muestra los valosres de la tabla tipos con el select2
-    {
-        funcion='llenar_tipos';
-        $.post('../controlador/tipo_controller.php',{funcion},(Response)=>
-        {
-            //console.log(Response);
-            const tipos = JSON.parse(Response);
-            let template='';
-            tipos.forEach(tipo => {
-                template+=`
-                <option value="${tipo.id}">${tipo.nombre}</option>
-                `;
-            });
-            $('#tipo').html(template);
-        })
-    }
-    function llenar_presentaciones() //muestra los valores de la tabla presentacion con el select2
-    {
-        funcion='llenar_presentaciones';
-        $.post('../controlador/presentacion_controller.php',{funcion},(Response)=>
-        {
-            //console.log(Response);
-            const presentaciones = JSON.parse(Response);
-            let template='';
-            presentaciones.forEach(presentacion => {
-                template+=`
-                <option value="${presentacion.id}">${presentacion.nombre}</option>
-                `;
-            });
-            $('#presentacion').html(template);
-        })
-    }*/
     $('#form-crear-producto').submit(e=> //obtine los valores del formulario crear productos
     {
         let id =$('#id_edit_producto').val();

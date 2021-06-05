@@ -133,6 +133,16 @@ $(document).ready(function(){
         window.open('../pdf/pdf-'+id+'.pdf','_blank');
       });
     });
+
+    $('#compras #lista-compra').on('click','#imp',function(){
+      let datos=datatable.row($(this).parents()).data();
+      let id=datos.id_ventas;
+      //console.log(id);
+      $.post('../controlador/pdf_controller.php',{id},(Response)=>{
+        console.log(Response);
+        window.open('../pdf/pdf-'+id+'.pdf','_blank');
+      });
+    });
 });
 let espanol={
     "sProcessing":     "Procesando...",

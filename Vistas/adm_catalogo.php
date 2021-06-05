@@ -24,7 +24,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="adm_catalogo.php">Home</a></li>
-                  <li class="breadcrumb-item active">Venta</li> 
+                  <li class="breadcrumb-item active">Venta:</li><span id="id_venta">10</span>
                 </ol>
               </div>
             </div>
@@ -41,7 +41,6 @@
                                     <div class="col">
                                         <p class="titulo_cp ">Vendedor: <?php echo $_SESSION["nombre_us"];?></p>
                                     </div>
-                                    <span id="n_venta" class="titulo_cp">12</span>
                                     <span class="titulo_cp1">Cliente: </span>
                                     <div class="col">
                                         <select id="cliente_select" class="form-control select2" style="width:100%;"></select>
