@@ -195,3 +195,4 @@ include_once 'layouts/footer.php';
 ?>
 <script src="../js/carrito.js"></script>
 <script src="../js/catalogo.js"></script>
+

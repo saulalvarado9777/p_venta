@@ -1,6 +1,6 @@
 $(document).ready(function(){
     mostrar_consultas();
-    function mostrar_consultas()
+     function mostrar_consultas()
     {
       let funcion='mostrar_consultas';
       $.post('../controlador/ventas_controller.php',{funcion},(Response)=>//peticion ajax de jquery
@@ -133,8 +133,7 @@ $(document).ready(function(){
         window.open('../pdf/pdf-'+id+'.pdf','_blank');
       });
     });
-
-    $('#compras #lista-compra').on('click','#imp',function(){
+    /*$('#compras #lista-compra').on('click','#imp',function(){
       let datos=datatable.row($(this).parents()).data();
       let id=datos.id_ventas;
       //console.log(id);
@@ -142,7 +141,7 @@ $(document).ready(function(){
         console.log(Response);
         window.open('../pdf/pdf-'+id+'.pdf','_blank');
       });
-    });
+    });*/
 });
 let espanol={
     "sProcessing":     "Procesando...",

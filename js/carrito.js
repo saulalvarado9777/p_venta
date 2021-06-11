@@ -6,15 +6,15 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
     recuperarls_carrito();
     calcular_total();
     recuperarls_carrito_compra();
-    recuperarls_carrito_venta();
-    
+    obtener_id_venta();
+    /*recuperarls_carrito_venta();
     $(document).on('click','#imp',(e)=>{
         let id_venta=1;
         $.post('../controlador/pdf_venta_controller.php',{id_venta},(Response)=>{
-            //console.log(Response);//obtenemos el pdf como respuesta y no es soportado por js
+            console.log(Response);//obtenemos el pdf como respuesta y no es soportado por js
             window.open('../pdf_venta/pdf-'+id_venta+'.pdf','_blank')
           });
-    });
+    });*/
     $(document).on('click','.carrito',(e)=>//evento on cada vez que haga click en agregar al carrito y ocurra un evento va hacer un callback o una funcion
     {
         const elemento =$(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;//capturamos los datos del card del producto
@@ -104,11 +104,7 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $(document).on('click','#procesar-compra',(e)=>
     {
-        /*const elemento =$(this)[0].activeElement.parentElement.parentElement;
-        const id =$(elemento).attr('ProdId');//recuperamos el id del producto que queremos eliminar
-        console.log(id);*/
         procesar_compra();
-
     });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function recuperarls () //nos permite recuperar los datos del localstorage
@@ -209,21 +205,6 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
         }
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-async function recuperarls_carrito_venta()
-{
-    productos = recuperarls();
-    funcion='traer_productos_ls';
-    //productos.forEach(producto => {
-        const Response = await fetch('../controlador/pdf_venta_controller.php',{
-            method:'POST',
-            headers:{'Content-Type':'application/x-www-form-urlencoded'},
-            body:'funcion='+funcion+'&&productos='+JSON.stringify(productos)//lo que le enviamos al servidor lo tenemos que codificar
-        });
-        let resultado = await Response.text();
-        console.log(resultado);
-    //});
-    //$('#lista-ventas').append(resultado);
-}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     async function recuperarls_carrito_compra()
     {
@@ -374,15 +355,34 @@ async function recuperarls_carrito_venta()
         let error = await Response.text();
         return error;
     }
-    
+    function obtener_id_venta()
+    {   
+        funcion='obtener_id_venta';
+        $.post('../controlador/ventas_controller.php',{funcion},(Response)=>
+        {
+            //console.log(Response);
+            const ventas = JSON.parse(Response);
+            let id_venta
+            ventas.forEach(venta => {
+                id_venta=venta.id
+            });
+            $('#id_venta').html(id_venta);//es el identificador en el html del select en la vista adm_catalogo*/
+        })
+    }
     function registrar_compra(cliente){
+        //let id=$("#id_venta").val();
+        id=124;
         funcion='registrar_compra';
+        console.log(id);
         let total=$('#total').get(0).textContent;//recuperar el total del primer dato y accedemos al contenido con textcontent
         let productos=recuperarls();//recuperamos todos los productos que queremos vender
         let json=JSON.stringify(productos);//enviamos los productos como json
         $.post('../controlador/venta_controller.php',{funcion,total,cliente,json},(Response)=>{
             //console.log(Response);
+        });
+        $.post('../controlador/pdf_venta_controller.php',{id},(Response)=>{
             console.log(Response);
+            window.open('../pdf_venta/pdf-'+id+'.pdf','_blank');
         });
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

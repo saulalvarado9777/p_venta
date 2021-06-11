@@ -1,8 +1,8 @@
 $(document).ready(function(){
     $('#carrito').show();
     buscar_producto();
-    obtener_id_venta();
-    function obtener_id_venta()
+    //obtener_id_venta();
+    /*function obtener_id_venta()
     {   
         funcion='obtener_id_venta';
         $.post('../controlador/ventas_controller.php',{funcion},(Response)=>
@@ -13,9 +13,9 @@ $(document).ready(function(){
             ventas.forEach(venta => {
                 id_venta=venta.id
             });
-            $('#id_venta').html(id_venta);//es el identificador en el html del select en la vista adm_catalogo*/
+            $('#id_venta').html(id_venta);//es el identificador en el html del select en la vista adm_catalogo
         })
-    }
+    }*/
     function buscar_producto(consulta)
     {
         funcion='buscar';

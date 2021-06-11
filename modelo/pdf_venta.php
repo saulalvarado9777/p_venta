@@ -2,7 +2,7 @@
 include_once 'venta.php';
 include_once 'ventaproducto.php';
 include_once 'cliente.php';
-function obtenerHtml($id_venta)
+function getHtml($id_venta)
 {
     $venta= new venta();//intancia del modelo venta
     $venta_producto = new ventaProducto();//intancia dle modelo venta producto
@@ -37,7 +37,7 @@ function obtenerHtml($id_venta)
             $plantilla.='
             
             <div id="project">
-                <div><span>Codigo de Venta: </span>'.$cliente_nombre.'</div>
+                <div><span>Codigo de Venta: </span>'.$objeto->id_ventas.'</div>
                 <div><span>Cliente: </span>'.$cliente_nombre.'</div>
                 <div><span>Fecha y Hora: </span>'.$objeto->fecha.'</div>
                 <div><span>Vendedor: </span>'.$objeto->vendedor.'</div>
@@ -59,40 +59,40 @@ function obtenerHtml($id_venta)
                 </tr>
                 </thead>
                 <tbody>';
-                    foreach ($venta_producto->objetos as $objeto) {
-                    
-                    $plantilla.='<tr>
-                        
-                        <td class="servic_producto">'.$objeto->producto.'</td>
-                        <td class="servic">'.$objeto->unidad.'</td>
-                        <td class="servic">'.$objeto->categoria.'</td>
-                        <td class="servic">'.$objeto->cantidad.'</td>
-                        <td class="servic">$'.$objeto->pre_out.'</td>
-                        <td class="servic">$'.$objeto->subtotal.'</td>
-                    </tr>';
-                    }
-                    $calculos= new venta();
-                    $calculos->buscar_id($id_venta);
-                    foreach ($calculos->objetos as $objeto) {
-                    $igv=$objeto->total*0.18;
-                    $sub=$objeto->total-$igv;
-                    
-                    $plantilla.='
-                    <tr>
-                        <td colspan="8" class="grand total">SUBTOTAL</td>
-                        <td class="grand total">$'.$sub.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="8" class="grand total">IVA(16%)</td>
-                        <td class="grand total">$'.$igv.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="8" class="grand total">TOTAL</td>
-                        <td class="grand total">$'.$objeto->total.'</td>
-                    </tr>';
+                foreach ($venta_producto->objetos as $objeto) {
+                
+                $plantilla.='
+                <tr>    
+                    <td class="servic_producto">'.$objeto->producto.'</td>
+                    <td class="servic">'.$objeto->unidad.'</td>
+                    <td class="servic">'.$objeto->categoria.'</td>
+                    <td class="servic">'.$objeto->cantidad.'</td>
+                    <td class="servic">$'.$objeto->pre_out.'</td>
+                    <td class="servic">$'.$objeto->subtotal.'</td>
+                </tr>';
+                }
+                $calculos= new venta();
+                $calculos->buscar_id($id_venta);
+                foreach ($calculos->objetos as $objeto) {
+                $igv=$objeto->total*0.18;
+                $sub=$objeto->total-$igv;
+                
+                $plantilla.='
+                <tr>
+                    <td colspan="8" class="grand total">SUBTOTAL</td>
+                    <td class="grand total">$'.$sub.'</td>
+                </tr>
+                <tr>
+                    <td colspan="8" class="grand total">IVA(16%)</td>
+                    <td class="grand total">$'.$igv.'</td>
+                </tr>
+                <tr>
+                    <td colspan="8" class="grand total">TOTAL</td>
+                    <td class="grand total">$'.$objeto->total.'</td>
+                </tr>';
 
-                    }
-$plantilla.='
+                }
+            $plantilla.='
                 </tbody>
             </table>
             <div id="notices">
