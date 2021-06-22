@@ -2,13 +2,14 @@
 include_once 'conexion.php';
 class usuario{
     var $objetos;
-    public function __construct(){
-        $db= new conexion();
-        $this->acceso= $db->pdo; 
+    public function __construct()
+    {
+        $db = new conexion(); //instanciamos un objeto de la clase conexión 
+        $this->acceso= $db->pdo;
     }
     function Loguearse($user,$pass){
         $sql="SELECT * FROM usuarios WHERE nombre_usuario=:user";/*a la izquierda elementos de lbd y a la derecha donde se va a lojar * */
-        $query= $this->acceso->prepare($sql);
+        $query= $this->acceso->prepare($sql); 
         $query->execute(array(':user'=>$user));
         $objetos=$query->fetchall();
         foreach ($objetos as $objeto) {

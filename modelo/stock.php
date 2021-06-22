@@ -116,6 +116,14 @@ class lote
             }
         }
     }
-
+/////////////////////////////////////////////nuevas consultas
+    function crear_lote($codigo,$cantidad,$precio_compra,$fk_compra,$fk_producto) //es la funcion para crear un producto nuevo
+    {
+            $sql="INSERT INTO lote(codigo,cantidad,cantidad_lote,precio_compra,fk_compra,fk_producto) 
+            VALUES (:codigo,:cantidad,:cantidad_lote,:precio_compra,:fk_compra,:fk_producto)"; 
+            $query= $this->acceso->prepare($sql); 
+            $query->execute(array(':codigo'=>$codigo,':cantidad'=>$cantidad,':cantidad_lote'=>$cantidad,':precio_compra'=>$precio_compra,':fk_compra'=>$fk_compra,':fk_producto'=>$fk_producto));
+            echo 'agregado';
+    }
 }
 ?>

@@ -7,10 +7,10 @@ $(document).ready(function(){
       {
         //console.log(Response);
         const vistas = JSON.parse(Response);
-        $('#venta_dia_vendedor').html(vistas.venta_dia_vendedor);
-        $('#venta_diaria').html(vistas.venta_diaria);
-        $('#venta_mensual').html(vistas.venta_mensual);
-        $('#venta_anual').html(vistas.venta_anual);
+        $('#venta_dia_vendedor').html((vistas.venta_dia_vendedor*1).toFixed(2));//agregamos la funcion tofixed para que solo me muestre los valores con dos decimales
+        $('#venta_diaria').html((vistas.venta_diaria*1).toFixed(2));//los valores que tiene vistas.diaria son cadenas
+        $('#venta_mensual').html((vistas.venta_mensual*1).toFixed(2));//y para convertilas a numero,
+        $('#venta_anual').html((vistas.venta_anual*1).toFixed(2));//multiplicamos por uno
 
         
       });

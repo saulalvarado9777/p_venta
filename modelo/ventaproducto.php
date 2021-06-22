@@ -11,7 +11,7 @@ class ventaProducto
     function ver($id)
     {
         $sql="SELECT  venta_productos.pre_out AS pre_out,cantidad,productos.nombre AS producto, presentacion,unidad, 
-        productos.fk_categoria AS categoria, subtotal 
+        categoria.nombre AS categoria, subtotal 
         FROM venta_productos 
         JOIN productos ON fk_productos = id_productos AND fk_ventas=:id
         JOIN categoria ON fk_categoria=id_categoria"; 

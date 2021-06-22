@@ -7,6 +7,6 @@
     $mpdf = new \Mpdf\Mpdf();
     $mpdf->WriteHTML($css, \Mpdf\HTMLParserMode::HEADER_CSS);//PARA ENVIAR EL CSS AL ARCHIVO PDF
     $mpdf->WriteHTML($html, \Mpdf\HTMLParserMode::HTML_BODY);//para enviar la estrctura html
-    $mpdf->Output("../pdf_venta/pdf-".$id_venta.".pdf","F");
-
+    $mpdf->Output("../pdf_venta/pdf-".$id_venta.".pdf","F");//guardael archivo en la ruta
+    $mpdf->Output("../pdf_venta/pdf-".$id_venta.".pdf",'I'); //muestra a usuario
 ?> 

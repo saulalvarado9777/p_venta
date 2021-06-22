@@ -94,9 +94,10 @@
     width: 100%;
     border-collapse: collapse;
     border-spacing: 50;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     margin-top: -50px;
   }
+
   
   /*table tr:nth-child(2n-1) td {
     background: rgb(227, 220, 230);
@@ -149,7 +150,9 @@
   
   #notices .notice {
     color: rgb(115, 117, 93);
-    font-size: 1.2em;
+    font-size: 0.8em;
+    border-bottom: 1px solid  #c0334d;
+    margin-bottom: 1px;
   }
   
   footer {

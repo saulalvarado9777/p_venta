@@ -169,6 +169,14 @@
               </p>
             </a>
           </li>
+          <li id="com" class="nav-item">
+            <a href="adm_compras.php" class="nav-link">
+              <i class="nav-icon fas fa-people-carry"></i>
+              <p>
+                Compras
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

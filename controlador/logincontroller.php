@@ -11,7 +11,7 @@
             case '1':
                 header('Location: ../Vistas/adm_catalogo.php');
                 break;
-            case 2: 
+            case '2': 
                 header('Location: ../Vistas/adm_catalogo.php');
                 break;
         }

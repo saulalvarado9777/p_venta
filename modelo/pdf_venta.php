@@ -49,7 +49,6 @@ function getHtml($id_venta)
             <table>
                 <thead>
                 <tr>
-                
                     <th class="service">Producto</th>
                     <th class="service">Unidad</th>
                     <th class="service">Categoria</th>
@@ -95,14 +94,15 @@ function getHtml($id_venta)
             $plantilla.='
                 </tbody>
             </table>
-            <div id="notices">
-                <div>NOTICE:</div>
-                <div class="notice">*Presentar este comprobante de pago para cualquier reclamo o devolucion.</div>
-                <div class="notice">*El reclamo procedera dentro de las 24 horas de haber hecho la compra.</div>
-                <div class="notice">*Si el producto esta dañado o abierto, la devolucion no procedera.</div>
-                <div class="notice">*Revise su cambio antes de salir del establecimiento.</div>
-            </div>
         </main>
+        <div id="notices">
+            <div class="notice">FORMA DE PAGO: EFECTIVO</div>
+            <div class="notice">Salida la mercancia no se aceptan devoluciones</div>
+            <div class="notice">NOTA: TODA ENTREGA DE MERCANCIA SE REALIZARÁ A PIE DE VEHICULO, LIBRE DE MANIOBRAS</div>
+            <div class="notice">Por favor de realizar su deposito a nombre de: jussel Alvarado Castañeda Banamex Suc. 7009  Cta. 1874189  Cta. Int. 00 24 38 70 09 18 74 18 97</div>
+            <div class="notice">Si el producto esta dañado o abierto, la devolucion no procedera.</div>
+            <div class="notice">Revise su cambio antes de salir del establecimiento.</div>
+        </div>
         <footer>
             Av. Del departamento del distrito federal s/n, Sta.Maria Atarasquillo, Lerma, Estado México.
         </footer>

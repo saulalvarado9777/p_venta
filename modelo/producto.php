@@ -152,7 +152,20 @@ class producto
             $query->execute();
             $this->objetos=$query->fetchall();
             return $this->objetos;
-        
+    }
+    function obtener_productos()
+    {
+            $sql="SELECT 
+            id_productos, productos.nombre as nombre,
+            inv_min, pre_in, pre_out, presentacion, unidad, 
+            categoria.nombre as categoria, fk_categoria 
+            FROM productos JOIN categoria ON id_categoria=fk_categoria
+            ORDER BY nombre ASC"; 
+            $query= $this->acceso->prepare($sql); 
+            $query->execute();
+            $this->objetos=$query->fetchall();
+            return $this->objetos;
+            
     }
 }
 ?>

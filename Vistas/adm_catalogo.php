@@ -24,7 +24,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item"><a href="adm_catalogo.php">Home</a></li>
-                  <li class="breadcrumb-item active">Venta:</li><span id="id_venta">10</span>
+                  <li class="breadcrumb-item active">Venta:</li><label id="id_venta">1</label>
                 </ol>
               </div>
             </div>

@@ -297,29 +297,18 @@ if($_POST['funcion']=='reporte_productosExcel')
     }
     $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
     $writer->save('../Excel/'.$nombre_archivo);
-    
-    $facturapi = new Facturapi( "sk_test_me2gNREqlGxPaJxaKLorBzW5k80ADy4w" );
-    $invoice = $facturapi->Invoices->create(array(
-        "customer" => array(
-          "legal_name" => "John Doe",
-          "email" => "saul.alvarado@uicui.edu.mx",
-          "tax_id" => "ABCD111111CBA"
-        ),
-        "items" => array(
-          array(
-            "product" => array(
-              "description" => "Ukelele",
-              "product_key" => "60131324",
-              "price" => 345.60
-            )
-          ),
-        ),
-          "payment_form" => \Facturapi\PaymentForm::EFECTIVO
-      ));
-      // Envía el XML y PDF por email a tu cliente
-      // Envía el XML y PDF por email a tu cliente
-      $facturapi->Invoices->send_by_email("<INVOICE_ID>");
-
-
 }
+if($_POST['funcion']=='obtener_productos')
+    {
+        $producto->obtener_productos();
+        $json=array();
+        foreach ($producto->objetos as $objeto)
+        {
+            $json[] = array(
+                'nombre'=>$objeto->id_productos.'|'.$objeto->nombre.'|'.$objeto->inv_min.'|'.$objeto->pre_in.'|'.$objeto->pre_out.'|'.$objeto->presentacion.'|'.$objeto->unidad.'|'.$objeto->categoria
+            );
+        }
+        $jsonstring=json_encode($json);
+        echo $jsonstring;
+    }
 ?>
