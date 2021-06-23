@@ -13,11 +13,11 @@ $(document).ready(function()
             lotes.forEach(lote=>
             {   
              template+=`
-             <div StockId="${lote.id}" StockLote="${lote.stock}" StockNombre="${lote.nombre}"  StockCategoria="${lote.categoria}" 
+             <div StockId="${lote.id}" CodigoLote="${lote.codigo}" StockLote="${lote.stock}" StockNombre="${lote.nombre}"  StockCategoria="${lote.categoria}" 
              StockProveedor="${lote.proveedor}" class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch mt-3">
              <div class="card bg-light">
              <div class="card-header text-muted border-bottom-0">
-                 <p>Código ${lote.id}</p>
+                 <p>Código ${lote.codigo}</p>
                  <i class="fas fa-lg fa-cubes mr-1"></i>${lote.stock}
              </div>
              <div class="card-body pt-0">
@@ -69,34 +69,36 @@ $(document).ready(function()
     });
     $(document).on('click','.editar',(e)=>
     {
-        const elemento =$(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
-        const id=$(elemento).attr('StockId');     //estas constantes la traemos del template, dentro del elemento de tr
-        const stock=$(elemento).attr('StockLote');
+        let elemento =$(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
+        let id=$(elemento).attr('StockId');     //estas constantes la traemos del template, dentro del elemento de tr
+        let stock=$(elemento).attr('StockLote');
+        let codigo=$(elemento).attr('CodigoLote');
+
         //console.log(laboratorio+' '+tipo+' '+presentacion);
         $('#id_stock_producto').val(id); //estos identificadores lo traemos del html de productos y ponemos el valo del id del template
         $('#stock').val(stock);
-        $('#codigo-stock').html(id);
+        $('#codigo-stock').html(codigo);
 
     });
     $('#form-editar-stock').submit(e=>
+    {
+        let id = $('#id_stock_producto').val();
+        let stock = $('#stock').val();
+        funcion='editar';
+        $.post('../controlador/stock_controller.php',{id,stock,funcion},(Response)=>
         {
-            let id = $('#id_stock_producto').val();
-            let stock = $('#stock').val();
-            funcion='editar';
-            $.post('../controlador/stock_controller.php',{id,stock,funcion},(Response)=>
+            //console.log(Response);
+            if(Response=='editar_stock')
             {
-                console.log(Response);
-                if(Response=='editar')
-                {
-                    $('#editar').hide('slow');
-                    $('#editar').show(1000);
-                    $('#editar').hide(2000);
-                    $('#form-editar-stock').trigger('reset');
-                }
-                buscar_lote();
-            });
-            e.preventDefault();
+                $('#editar_stock').hide('slow');
+                $('#editar_stock').show(1000);
+                $('#editar_stock').hide(2000);
+                $('#form-editar-stock').trigger('reset');
+            }
+            buscar_lote();
         });
+        e.preventDefault();
+    });
     $(document).on('click','.eliminar',(e)=>
     {
             funcion='borrar';
@@ -122,7 +124,7 @@ $(document).ready(function()
                 if (result.value) {
                     $.post('../controlador/stock_controller.php',{id,funcion},(Response)=>
                     {
-                        //console.log(Response);
+                        console.log(Response);
                         if(Response!='borrado')
                         {
                             swalWithBootstrapButtons.fire(

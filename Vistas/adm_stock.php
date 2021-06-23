@@ -16,7 +16,7 @@
               </button>
           </div>
           <div class="card-body">
-            <div class="alert alert-success text-center m-1" id="editar" style="display:none;"><!--alerta para modificar-->
+            <div class="alert alert-success text-center m-1" id="editar_stock" style="display:none;"><!--alerta para modificar-->
               <span><i class="fas fa-check m-1"> Se modifico correctamente</i></span>
             </div>
               <form id="form-editar-stock"> 

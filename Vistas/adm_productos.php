@@ -9,46 +9,6 @@
   <?php
     include_once 'layouts/nav.php';
   ?>
-  <!-- modal crear stock-->
-  <div class="modal fade" id="crearstock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!--con el id del modal lo usamos el el boton para crear el producto-->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="card card-success">
-          <div class="card-header" style="background: #114358cc;">
-              <h3 class="card-title">Crear stock</h3>
-              <button data-dismiss="modal" aria-label="close" class="close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-          </div>
-          <div class="card-body">
-              <!--son los alert al momento de crear un nuevo producto-->
-            <div class="alert alert-success text-center m-1" id="agregar-stock" style="display:none;">
-              <span><i class="fas fa-check m-1"> Se agrego correctamente</i></span>
-            </div>
-              <form id="form-crear-stock"><!-- id con el que identificamos el form para crear el producto--> 
-                <div class="form-group">
-                    <label for="nombre_producto_stock">Producto: </label>
-                    <label id="nombre_producto_stock">Nombre el producto</label>
-                </div>
-                <div class="form-group">
-                    <label for="proveedor">Proveedor</label>
-                    <select name="proveedor" id="proveedor" class="form-control select2" style="width:100%"></select>
-                </div>
-                <div class="form-group">
-                    <label for="stock">Stock</label>
-                    <input id="stock" type="number" class="form-control" placeholder="Ingresar stock" require>
-                </div>
-                <input type="hidden" id="id_stock_producto">
-          </div>
-          <div class="card-footer">
-            <button type="submit" class="btn bg-gradient-primary float-right m-1">Guardar</button>
-            <button type="button" data-dismiss="modal" class="btn btn-outline-secondary float-right m-1">Cerrar</button> 
-        </form>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- modal crear reporte-->
 <div class="modal fade" id="formatoreporte" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!--con el id del modal lo usamos el el boton para crear el producto-->
   <div class="modal-dialog">

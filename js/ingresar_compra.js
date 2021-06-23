@@ -210,7 +210,7 @@ function llenar_proveedores() {//la funcion manda a traes lo productos, para mos
                                         icon: 'error',
                                         title: 'Oops...',
                                         text: 'No hay productos agregados!',
-                                      })
+                                    })
                                 }
                                 else
                                 {
@@ -243,7 +243,7 @@ function llenar_proveedores() {//la funcion manda a traes lo productos, para mos
                                         }
                                         else
                                         {
-                                           Swal.fire({
+                                            Swal.fire({
                                                 icon: 'error',
                                                 title: 'Oops...',
                                                 text: 'Error en el servidor!',

@@ -1,6 +1,8 @@
 $(document).ready(function(){
     mostrar_consultas();
-     function mostrar_consultas()
+    listar_ventas();
+    var datatable;
+    function mostrar_consultas()
     {
       let funcion='mostrar_consultas';
       $.post('../controlador/ventas_controller.php',{funcion},(Response)=>//peticion ajax de jquery
@@ -11,35 +13,32 @@ $(document).ready(function(){
         $('#venta_diaria').html((vistas.venta_diaria*1).toFixed(2));//los valores que tiene vistas.diaria son cadenas
         $('#venta_mensual').html((vistas.venta_mensual*1).toFixed(2));//y para convertilas a numero,
         $('#venta_anual').html((vistas.venta_anual*1).toFixed(2));//multiplicamos por uno
-
-        
+        $('#venta_anual').html((vistas.venta_anual*1).toFixed(2));//multiplicamos por uno
       });
     }
-    //let funcion="ver";
-    funcion='listar';
-    /*$.post('../controlador/ventas_controller.php',{funcion},(Response)=>{
-        console.log(JSON.parse(Response));
-        console.log(JSON.parse(Response));
-    })*/
-    let datatable = $('#tabla_ventas').DataTable( {
-        "ajax": {
-            "url":"../controlador/ventas_controller.php",
-            "method":"POST",
-            "data":{funcion:funcion}
-        },
-        "columns": [
-            { "data": "id_ventas" },
-            { "data": "cliente" },
-            { "data": "total" },
-            { "data": "vendedor" },
-            { "data": "fecha"},
-            { "defaultContent": `<button class="imprimir btn btn-outline-secondary"><i class="fas fa-print"></i></button>
-                                 <button class="ver btn btn-outline-success" type="button" data-toggle="modal" data-target="#vista_venta"><i class="fas fa-search"></i></button>
-                                 <button class="borrar btn btn-outline-danger"><i class="fas fa-window-close"></i></button>`}
-        ],
-        "language": espanol
-    } );
-    
+    function listar_ventas() {
+      funcion='listar';
+      datatable = $('#tabla_ventas').DataTable( {
+          "ajax": {
+              "url":"../controlador/ventas_controller.php",
+              "method":"POST",
+              "data":{funcion:funcion}
+          },
+          "columns": [
+              { "data": "id_ventas" },
+              { "data": "cliente" },
+              { "data": "total" },
+              { "data": "vendedor" },
+              { "data": "fecha"},
+              { "defaultContent":`<button class="imprimir btn btn-outline-secondary"><i class="fas fa-print"></i></button>
+                                  <button class="ver btn btn-outline-success" type="button" data-toggle="modal" data-target="#vista_venta"><i class="fas fa-search"></i></button>
+                                  <button class="borrar btn btn-outline-danger"><i class="fas fa-window-close"></i></button>`}
+          ],
+          "destroy":true,
+          "language": espanol
+      } );
+    }
+
     $('#tabla_ventas tbody').on('click','.ver',function(){
         let datos=datatable.row($(this).parents()).data();
         let id=datos.id_ventas;
@@ -102,6 +101,7 @@ $(document).ready(function(){
                         'La venta: '+id+' ha sido eliminada.',
                         'success'
                       ) 
+                      listar_ventas();
                     }
                     else if(Response=='nodelete')
                     {
@@ -133,15 +133,6 @@ $(document).ready(function(){
         window.open('../pdf/pdf-'+id+'.pdf','_blank');
       });
     });
-    /*$('#compras #lista-compra').on('click','#imp',function(){
-      let datos=datatable.row($(this).parents()).data();
-      let id=datos.id_ventas;
-      //console.log(id);
-      $.post('../controlador/pdf_controller.php',{id},(Response)=>{
-        console.log(Response);
-        window.open('../pdf/pdf-'+id+'.pdf','_blank');
-      });
-    });*/
 });
 let espanol={
     "sProcessing":     "Procesando...",

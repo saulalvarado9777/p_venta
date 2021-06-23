@@ -17,7 +17,6 @@
             if($venta->verificar($id_venta,$id_usuario)==1)//el metodo verificar corresponde al modelo venta
             {//si la venta te pertenece al que la creo la puede eliminar
                 $venta_producto->borrar($id_venta);//el metodo corresponde al modelo ventaProducto
-
                 $detalle_venta->recuperar($id_venta);//el metodo correspon al modelo detalleventa
                 foreach ($detalle_venta->objetos as $det) {
                     $stock->devolver($det->fk_det_lote,$det->det_cantidad,$det->det_fecha,$det->fk_det_prod,$det->fk_det_prov);

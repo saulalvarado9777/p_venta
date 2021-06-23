@@ -150,6 +150,20 @@
                           </div>
                         </div>
                         <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                          <!-- small box -->
+                          <div class="small-box bg-primary">
+                            <div class="inner">
+                              <h3 id="ganancia_mensual">0</h3>
+                              <p>Ganancia mensual</p>
+                            </div>
+                            <div class="icon">
+                              <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <a href="adm_mas_consultas.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                          </div>
+                        </div>
+                        <!-- ./col -->
                       </div>
                     </div>
                     <div class="card-footer">    
@@ -201,5 +215,4 @@ include_once 'layouts/footer.php';
         header('Location: ../index.php');
     }
 ?>
-<script src="../js/datatables.js"></script>
 <script src="../js/venta.js"></script>

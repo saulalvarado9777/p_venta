@@ -19,6 +19,8 @@
 <script src="../js/sweetalert2.js"></script>
 <!-- select2 -->
 <script src="../js/select2.js"></script>
+<script src="../js/datatables.js"></script>
+
 </body>
 <script>
   funcion='tipo_usuario';

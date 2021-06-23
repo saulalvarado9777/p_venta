@@ -138,9 +138,6 @@ $(document).ready(function()
                                 <button class="editar btn btn-sm bg-success" type="button" data-toggle="modal" data-target="#crearproducto">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
-                                <button class="stock btn btn-sm bg-primary" type="button" data-toggle="modal" data-target="#crearstock">
-                                    <i class="fas fa-plus-square"></i>
-                                </button>
                                 <button class="eliminar btn btn-sm bg-danger">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
@@ -249,30 +246,6 @@ $(document).ready(function()
         $('#unidad').val(unidad);
         $('#categoria').val(id_categoria).trigger('change');
         edit=true;
-    });
-    $(document).on('click','.stock',(e)=>
-    {
-        const elemento =$(this)[0].activeElement.parentElement.parentElement.parentElement.parentElement;
-        const id=$(elemento).attr('ProdId');     //estas constantes la traemos del template, dentro del elemento de tr
-        const nombre=$(elemento).attr('ProdNombre');
-        $('#id_stock_producto').val(id); //estos identificadores lo traemos del html de productos y ponemos el valo del id del template
-        $('#nombre_producto_stock').html(nombre);
-    });
-    $('#form-crear-stock').submit(e=>
-    {
-        let id_producto=$('#id_stock_producto').val();
-        let proveedor=$('#proveedor').val();
-        let stock=$('#stock').val();
-        funcion='crear';
-        $.post('../controlador/stock_controller.php',{funcion,id_producto,proveedor,stock,},(Response)=>
-        {
-                //console.log(Response);
-                $('#agregar-stock').hide('slow');
-                $('#agregar-stock').show(1000);
-                $('#agregar-stock').hide(2000);
-                $('#form-crear-stock').trigger('reset');
-                buscar_producto();
-        });
     });
     $(document).on('click','#button-reporte',(e)=>{
         funcion='reporte_productos';

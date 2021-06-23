@@ -65,10 +65,6 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
         //recuperarls_carrito_compra();
         }
         ///verificar si aqui podemos agregar lo de procesar compra
-        $(document).on('click','#procesar-compra',(e)=>
-        {
-            procesar_compra();
-        });
     });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     $(document).on('click','.borrar-producto',(e)=> //la clase de este boton es la del registro de de carrito en 
@@ -97,10 +93,10 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
         //recuperarls_carrito_compra();
     });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*$(document).on('click','#procesar-compra',(e)=>
+    $(document).on('click','#procesar-compra',(e)=>
     {
         procesar_compra();
-    });*/
+    });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     function recuperarls () //nos permite recuperar los datos del localstorage
     {
@@ -337,7 +333,7 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
         }
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    async function verificar_stock()
+    async function  verificar_stock()
     {
         let productos;
         funcion='verificar_stock';
@@ -369,7 +365,6 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
     }
     function registrar_compra(cliente){
         let id=$("#id_venta").text();
-        console.log(id);
         funcion='registrar_compra';
         let total=$('#total').get(0).textContent;//recuperar el total del primer dato y accedemos al contenido con textcontent
         let productos=recuperarls();//recuperamos todos los productos que queremos vender
@@ -378,7 +373,7 @@ $(document).ready(function()//jquery evento ready dentro de el una funcion
             console.log(Response);
         });
         $.post('../controlador/pdf_venta_controller.php',{id},(Response)=>{
-            console.log(Response);
+            //console.log(Response);
             window.open('../pdf_venta/pdf-'+id+'.pdf','_blank');
 
         });
